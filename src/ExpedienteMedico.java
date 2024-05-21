@@ -1,19 +1,20 @@
 public class ExpedienteMedico {
-    private Paciente paciente;
+    private Paciente paciente; // Composición con Persona
     private boolean historialMedico;
     private String diagnosticos;
     private String tratamientos;
     private String prescripciones;
+    private Doctor doctorAsociado; // Asociación con Doctor
 
-    public ExpedienteMedico(Paciente paciente, boolean historialMedico, String diagnosticos, String tratamientos, String prescripciones) {
+    public ExpedienteMedico(Paciente paciente, boolean historialMedico, String diagnosticos, String tratamientos, String prescripciones, Doctor doctorAsociado) {
         this.paciente = paciente;
         this.historialMedico = historialMedico;
         this.diagnosticos = diagnosticos;
         this.tratamientos = tratamientos;
         this.prescripciones = prescripciones;
+        this.doctorAsociado = doctorAsociado;
     }
 
-    // Getters y setters
     public Paciente getPaciente() {
         return paciente;
     }
@@ -54,4 +55,11 @@ public class ExpedienteMedico {
         this.prescripciones = prescripciones;
     }
 
+    public Doctor getDoctorAsociado() {
+        return doctorAsociado;
+    }
+
+    public void setDoctorAsociado(Doctor doctorAsociado) {
+        this.doctorAsociado = doctorAsociado;
+    }
 }

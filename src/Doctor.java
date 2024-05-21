@@ -1,85 +1,20 @@
 import java.util.Date;
-
-// Importar las clases necesarias
-import java.util.ArrayList;
 import java.util.List;
 
-// Clase Doctor que hereda de Persona e implementa Contrato
-public class Doctor extends Persona implements Contrato {
-    // Atributos específicos de Doctor
-    private String numeroColegiado;
-    private String tipoContrato;
-
-    // Asociaciones
-    private List<CitasMedicas> citasMedicas; // Agregación con CitasMedicas
-    private Especialidad especialidad; // Asociación con Especialidad
-    private List<Paciente> pacientesAsignados; // Asociación con Paciente
-    private List<Enfermero> enfermerosAsignados; // Asociación con Enfermero
+public class Doctor extends Persona {
     private GestionCitas gestionCitas; // Dependencia de la clase GestionCitas
+    private List<CitasMedicas> citasMedicas; // Agregación con CitasMedicas
+    private List<Especialidad> especialidades; // Asociación con Especialidad
+    private List<Paciente> pacientes; // Asociación con Paciente
+    private List<Enfermero> enfermeros; // Asociación con Enfermero
 
-    // Constructor
-    public Doctor(String nombre, String apellido, String dni, int edad, Date fechaNacimiento, String direccion, String numeroColegiado, String tipoContrato) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.dni = dni;
-        this.edad = edad;
-        this.fechaNacimiento = fechaNacimiento;
-        this.direccion = direccion;
-        this.numeroColegiado = numeroColegiado;
-        this.tipoContrato = tipoContrato;
-        this.citasMedicas = new ArrayList<>();
-        this.pacientesAsignados = new ArrayList<>();
-        this.enfermerosAsignados = new ArrayList<>();
-    }
-
-    // Métodos getter y setter para los atributos específicos de Doctor
-    public String getNumeroColegiado() {
-        return numeroColegiado;
-    }
-
-    public void setNumeroColegiado(String numeroColegiado) {
-        this.numeroColegiado = numeroColegiado;
-    }
-
-    public String getTipoContrato() {
-        return tipoContrato;
-    }
-
-    public void setTipoContrato(String tipoContrato) {
-        this.tipoContrato = tipoContrato;
-    }
-
-    // Métodos getter y setter para las asociaciones
-    public List<CitasMedicas> getCitasMedicas() {
-        return citasMedicas;
-    }
-
-    public void setCitasMedicas(List<CitasMedicas> citasMedicas) {
+    public Doctor(String nombre, String apellido, String dni, int edad, Date fechaNacimiento, String direccion, GestionCitas gestionCitas, List<CitasMedicas> citasMedicas, List<Especialidad> especialidades, List<Paciente> pacientes, List<Enfermero> enfermeros) {
+        super(nombre, apellido, dni, edad, fechaNacimiento, direccion);
+        this.gestionCitas = gestionCitas;
         this.citasMedicas = citasMedicas;
-    }
-
-    public Especialidad getEspecialidad() {
-        return especialidad;
-    }
-
-    public void setEspecialidad(Especialidad especialidad) {
-        this.especialidad = especialidad;
-    }
-
-    public List<Paciente> getPacientesAsignados() {
-        return pacientesAsignados;
-    }
-
-    public void setPacientesAsignados(List<Paciente> pacientesAsignados) {
-        this.pacientesAsignados = pacientesAsignados;
-    }
-
-    public List<Enfermero> getEnfermerosAsignados() {
-        return enfermerosAsignados;
-    }
-
-    public void setEnfermerosAsignados(List<Enfermero> enfermerosAsignados) {
-        this.enfermerosAsignados = enfermerosAsignados;
+        this.especialidades = especialidades;
+        this.pacientes = pacientes;
+        this.enfermeros = enfermeros;
     }
 
     public GestionCitas getGestionCitas() {
@@ -90,17 +25,36 @@ public class Doctor extends Persona implements Contrato {
         this.gestionCitas = gestionCitas;
     }
 
-    // Implementación de los métodos de la interfaz Contrato
-    @Override
-    public String getTipoContrato() {
-        return tipoContrato;
+    public List<CitasMedicas> getCitasMedicas() {
+        return citasMedicas;
     }
 
-    @Override
-    public void setTipoContrato(String tipoContrato) {
-        this.tipoContrato = tipoContrato;
+    public void setCitasMedicas(List<CitasMedicas> citasMedicas) {
+        this.citasMedicas = citasMedicas;
     }
 
-    // Otros métodos específicos de Doctor
+    public List<Especialidad> getEspecialidades() {
+        return especialidades;
+    }
+
+    public void setEspecialidades(List<Especialidad> especialidades) {
+        this.especialidades = especialidades;
+    }
+
+    public List<Paciente> getPacientes() {
+        return pacientes;
+    }
+
+    public void setPacientes(List<Paciente> pacientes) {
+        this.pacientes = pacientes;
+    }
+
+    public List<Enfermero> getEnfermeros() {
+        return enfermeros;
+    }
+
+    public void setEnfermeros(List<Enfermero> enfermeros) {
+        this.enfermeros = enfermeros;
+    }
 }
 
